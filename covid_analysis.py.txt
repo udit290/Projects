@@ -1,0 +1,31 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Sample COVID-19 dataset
+data = {
+    "Country": ["India", "USA", "Brazil", "Russia", "UK"],
+    "Total Cases": [34000000, 45000000, 21000000, 15000000, 10000000],
+    "Recoveries": [33000000, 43000000, 20000000, 14000000, 9500000],
+    "Deaths": [450000, 700000, 590000, 300000, 140000],
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Calculate Recovery and Mortality Rates
+df["Recovery Rate (%)"] = (df["Recoveries"] / df["Total Cases"]) * 100
+df["Mortality Rate (%)"] = (df["Deaths"] / df["Total Cases"]) * 100
+
+# Print Summary
+print("COVID-19 Data Analysis:")
+print(df)
+
+# Visualization
+plt.figure(figsize=(10, 6))
+plt.bar(df["Country"], df["Total Cases"], color='blue', alpha=0.7, label="Total Cases")
+plt.bar(df["Country"], df["Deaths"], color='red', alpha=0.7, label="Deaths")
+plt.title("COVID-19 Cases and Deaths by Country")
+plt.xlabel("Country")
+plt.ylabel("Number of Cases")
+plt.legend()
+plt.show()
