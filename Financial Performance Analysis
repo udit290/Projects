@@ -1,0 +1,26 @@
+# Load libraries
+library(ggplot2)
+
+# Simulate financial dataset
+set.seed(123)
+data <- data.frame(
+  Year = 2011:2023,
+  Revenue = round(runif(13, 100, 200), 2),
+  Expenses = round(runif(13, 50, 150), 2),
+  Investments = round(runif(13, 20, 50), 2)
+)
+
+# Calculate profit, ROI (Return on Investment)
+data$Profit <- data$Revenue - data$Expenses
+data$ROI <- (data$Profit / data$Investments) * 100
+
+# Plot financial analysis
+plot <- ggplot(data, aes(x = Year)) +
+  geom_line(aes(y = Revenue, color = "Revenue"), size = 1) +
+  geom_line(aes(y = Expenses, color = "Expenses"), size = 1) +
+  geom_line(aes(y = Profit, color = "Profit"), size = 1) +
+  geom_line(aes(y = ROI, color = "ROI (%)"), size = 1) +
+  labs(title = "Financial Analysis with ROI", x = "Year", y = "Amount / Percentage", color = "Metric") +
+  theme_minimal()
+
+print(plot)
