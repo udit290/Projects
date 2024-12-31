@@ -1,0 +1,25 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Create financial dataset
+data = pd.DataFrame({
+    "Year": range(2011, 2024),
+    "Revenue": [120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240],
+    "Expenses": [80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140]
+})
+
+# Calculate Profit
+data["Profit"] = data["Revenue"] - data["Expenses"]
+
+# Plot financial data
+plt.plot(data["Year"], data["Revenue"], label="Revenue", marker="o")
+plt.plot(data["Year"], data["Expenses"], label="Expenses", marker="o")
+plt.plot(data["Year"], data["Profit"], label="Profit", marker="o")
+
+# Add labels and legend
+plt.title("Company Financial Analysis")
+plt.xlabel("Year")
+plt.ylabel("Amount")
+plt.legend()
+plt.grid()
+plt.show()
